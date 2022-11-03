@@ -97,16 +97,16 @@ def frequencies(pairs):
     for group in pairs:
         for pair in group:
             for offset in range(1):
-                for codon in re.findall(r".{1,3}", str(sequence[pair[0] + offset :pair[1] + 3])):
+                for codon in re.findall(r".{1,3}", str(sequence[pair[0] + 3 + offset :pair[1]])):
                     if len(codon) == 3:
                         codonFrequencies[codon] += 1
-                for dicodon in re.findall(r".{1,6}", str(sequence[pair[0] + offset :pair[1] + 3])):
+                for dicodon in re.findall(r".{1,6}", str(sequence[pair[0] + 3 + offset :pair[1]])):
                     if len(dicodon) == 6:
                         didoconFrequencies[dicodon] += 1
 
-                for amino in str(sequence[pair[0] + offset :pair[1] + 3].translate()):
+                for amino in str(sequence[pair[0] + 3 + offset :pair[1]].translate()):
                     aminoFrequencies[amino] += 1
-                for amino in re.findall(r".{1,2}", str(sequence[pair[0] + offset :pair[1] + 3].translate())):
+                for amino in re.findall(r".{1,2}", str(sequence[pair[0] + 3 + offset :pair[1]].translate())):
                     if (len(amino) == 2):
                         diaminoFrequencies[amino] += 1
 
